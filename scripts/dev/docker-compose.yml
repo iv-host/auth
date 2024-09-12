@@ -1,0 +1,17 @@
+services:
+  # database: persistence
+  db:
+    image: "mysql:8.0"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./initdb:/docker-entrypoint-initdb.d:ro"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    environment:
+      MYSQL_USER: auth
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: auth
+      MYSQL_ROOT_PASSWORD: password

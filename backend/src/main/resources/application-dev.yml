@@ -1,0 +1,8 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:/database/auth/db.changelog-root.yml
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth?allowPublicKeyRetrieval=true
+    username: auth
+    password: password
